@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info</title>
+</head>
+<body>
+<tr th:each = "Product: ${products}">
+    <td th:utext="${Product.title}"></td>
+    <td th:utext="${Product.price}"></td>
+    <form action="/product/delete/${product.id}" method="post">
+        <input type="submit" value="Удалить товар">
+    </form>
+</body>
+</html>

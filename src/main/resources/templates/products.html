@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<tr th:each = "Product: ${products}">
+    <td th:utext="${Product.title}"></td>
+    <td th:utext="${Product.price}"></td>
+
+    <td><a href="/product/${Product.id}">Ссылка</a></td>
+</tr>
+<h3>Создать новый товар</h3>
+<form action="/product/create" method="post">
+    <div class="">Название <input type="text" name="title"/></div>
+    <div class="">Описание <input type="text" name="description"/></div>
+    <div class="">Цена <input type="number" name="price"/></div>
+    <div class="">Город <input type="text" name="city"/></div>
+    <div class="">Автор <input type="text" name="author"/></div>
+    <input type="submit" value="создать">
+</form>
+</body>
+</html>
