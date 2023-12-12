@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+<h1>Привет!</h1>
+<p th:text="${key1}"> </p>
+<form action="/check" method="post">
+
+    <input type="number" value="Ответ" id="ans" name="ans">
+    <input type="number" value="Ответ" id="ans2" name="ans2">
+    <input type="submit" value="Проверить">
+</form>
+</body>
+</html>
