@@ -14,6 +14,7 @@ public class Product {
     private int price;
     private String city;
     private String author;
+    private String imgLink;
 
     public Product() {
     }
@@ -39,6 +40,10 @@ public class Product {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public void setImgLink(String imgLink) {
+        this.imgLink = imgLink;
     }
 
     public boolean equals(final Object o) {

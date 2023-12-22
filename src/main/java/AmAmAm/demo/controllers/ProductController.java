@@ -26,8 +26,14 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public String productInfo(@PathVariable Long id, Model model){
         model.addAttribute("product", productService.getProductById(id));
-        model.addAttribute("products", productService.list());
+//        model.addAttribute("products", productService.list());
         return "product-info";
+    }
+
+    @GetMapping("/product/create_page")
+    public String createProductPage(Model model){
+        model.addAttribute("products", productService.list());
+        return "create-page";
     }
     @PostMapping("/product/create")
     public String createProduct(Product product){

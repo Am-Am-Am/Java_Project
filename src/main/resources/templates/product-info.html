@@ -2,14 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Info</title>
+    <title th:utext="${product.title}"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        header{
+            background: #B63334;
+            height: 50px;
+        }
+        header>ul{
+            display: flex;
+            width: 100%;
+            height: 50px;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+            color: white;
+        }
+
+        header>ul>li>a{
+            text-decoration: none;
+            color: white;
+        }
+        header>ul>li>a:hover{
+            color: bisque;
+        }
+        main{
+            padding: 25px;
+
+        }
+
+        .main_wrapper{
+            display: flex;
+            justify-content: center;
+        }
+        .cards{
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: flex-start;
+        }
+
+
+        .cards_wrapper{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cards_wrapper1{
+            display: flex;
+            justify-content: center;
+        }
+        .card{
+            margin-top: 25px;
+            margin-right: 25px;
+            height: 350px;
+            border-radius: 10px;
+        }
+
+        .card_description{
+            margin-top: 25px;
+            margin-bottom: 25px;
+            max-width: 675px;
+            min-height: 50px;
+            background: gainsboro;
+
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .card_title{
+            font-size: 32px;
+        }
+        .card_img > img{
+            height: 450px;
+            width: 675px;
+            border-radius: 10px;
+        }
+
+        span{
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .bottom_card{
+            width: 675px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card_title{
+            text-align: center;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
-<tr th:each = "Product: ${products}">
-    <td th:utext="${Product.title}"></td>
-    <td th:utext="${Product.price}"></td>
-    <form action="/product/delete/${product.id}" method="post">
-        <input type="submit" value="Удалить товар">
-    </form>
+<header>
+    <ul>
+        <li><a href="/">Все товары</a></li>
+        <span><li th:utext="${product.title}"></li></span>
+        <li><a href="/product/create_page">Создать новый товар</a></li>
+    </ul>
+</header>
+<main>
+    <h1 th:utext="${product.title}"></h1>
+    <div class="main_wrapper">
+        <div class="item">
+
+            <div class="card_img"><img th:src="${product.imgLink}"/></div>
+            <div class="card_description">
+                <p th:utext="${product.description}"></p>
+            </div>
+
+            <div class="bottom_card">
+                <div th:utext="${product.city}"></div>
+                <div th:utext="${product.author}"></div>
+            </div>
+            <div class="bottom_card">
+                <div class="card_price" th:utext="${product.price}"></div>
+                <div class="">
+                    <form th:action="@{'/product/delete/' + ${product.id}}" method="post">
+                        <input type="submit" value="Удалить товар">
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</main>
+<footer></footer>
+
+<!--<tr th:each = "Product: ${products}">-->
+<!--   -->
+<!--    <td th:utext="${Product.price}"></td>-->
+
+
 </body>
 </html>
